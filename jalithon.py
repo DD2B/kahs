@@ -151,14 +151,6 @@ async def OwnerStart(event):
 • JOIN BOT CHANNEL - `/join`**""")
 
 
-START = """
-**-› Hello {} !
--› I'm Github Downloader Bot 
--› Just send a Repository Link !
-
--› Example :** `https://github.com/pyrogram/pyrogram`
-
-"""
 
     
 @jalithon.on(events.NewMessage(outgoing=True, pattern=".اوامر"))
