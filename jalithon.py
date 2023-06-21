@@ -52,82 +52,19 @@ LOGS = logging.getLogger(__name__)
 DEVS = [1759470911]
 OWNER_ID = 1759470911
 OWNER_IDD = 1759470911
-@jalithon.on_message(filters.command("start") & filters.private)
-async def start(client, message):
-    message_id = message.id
-    chat_id = message.chat.id
-    text = START
-    buttons = InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton(
-                        text="ᅠᅠABCDᅠᅠ",
-                        callback_data="a1",
-                    ),
-                    InlineKeyboardButton(
-                        text="ᅠᅠABCDᅠᅠ",
-                        callback_data="a2",
-                    ),
-                    InlineKeyboardButton(
-                        text="ᅠᅠABCDᅠᅠ",
-                        callback_data="a3",
-                    )
-                ],
-                [
-                    InlineKeyboardButton(
-                        text="ᅠᅠabcdᅠᅠ",
-                        callback_data="a4",
-                    ),
-                    InlineKeyboardButton(
-                        text="ᅠᅠABCDᅠᅠ",
-                        callback_data="a5",
-                    ),
-                    InlineKeyboardButton(
-                        text="ᅠᅠABCDᅠᅠ",
-                        callback_data="a6",
-                    )
-                ],
-                [
-                    InlineKeyboardButton(
-                        text="ᅠᅠABCDᅠᅠ",
-                        callback_data="a7",
-                    ),
-                    InlineKeyboardButton(
-                        text="ᅠᅠabcdᅠᅠ",
-                        callback_data="a8",
-                    ),
-                    InlineKeyboardButton(
-                        text="ᅠᅠABCDᅠᅠ",
-                        callback_data="a9",
-                    )
-                ],
-                [
-                    InlineKeyboardButton(
-                        text="ᅠᅠABCDᅠᅠ",
-                        callback_data="a10",
-                    )
-                ],
-                [
-                    InlineKeyboardButton(
-                        text="👨‍💻 Programmer",
-                        url="t.me/ZDDDU",
-                    ),
-                    InlineKeyboardButton(
-                        text="🎖️ Source channel",
-                        url="t.me/Y88F8",
-                    ),
-                ],
-            ]
-        )
-    await jalithon.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
-    await jalithon.send_message(
-        chat_id,
-        text.format(message.from_user.mention),
-        reply_to_message_id=message_id,
-        reply_markup=buttons
-    )
 
+@bot.message_handler(commands=['start'])
+def start(message):
+    markup = types.InlineKeyboardMarkup()
+    button1 = types.InlineKeyboardButton("Button 1", callback_data="1")
+    button2 = types.InlineKeyboardButton("Button 2", callback_data="2")
+    button3 = types.InlineKeyboardButton("Button 3", callback_data="3")
+    markup.add(button1, button2, button3)
+    bot.send_message(message.chat.id, "Please choose:", reply_markup=markup)
 
+@bot.callback_query_handler(func=lambda call: True)
+def query_handler(call):
+    bot.answer_callback_query(callback_query_id=call.id, text='Selected option: {}'.format(call.data))
 @jalithon.on(events.NewMessage(outgoing=False, pattern='/TEST'))
 async def OwnerStart(event):
     sender = await event.get_sender()
