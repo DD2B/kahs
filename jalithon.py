@@ -178,15 +178,6 @@ async def _(event):
 ??? 
 ''')
 
-@jalithon.on_callback_query(filters.regex("a1"))
-async def a1(_, query: CallbackQuery):
-      await query.answer("👨‍💻...")
-      print(query.message.reply_to_message.text)
-      xx = query.message.reply_to_message.text
-      # A B C D E F G H I J K L M N O P Q R S T U V W X Y Z 
-      # a b c d e f g h i j k l m n o p q r s t u v w x y z 
-      await query.edit_message_text(xx.replace("A","A").replace("B","B").replace("C","C").replace("D","D").replace("E","E").replace("F","F").replace("G","G").replace("H","H").replace("I","I").replace("J","J").replace("K","K").replace("L","L").replace("M","M").replace("N","N").replace("O","O").replace("P","P").replace("Q","Q").replace("R","R").replace("S","S").replace("T","T").replace("U","U").replace("V","V").replace("W","W").replace("X","X").replace("Y","Y").replace("Z","Z").replace("a","a").replace("b","b").replace("c","c").replace("d","d").replace("e","e").replace("f","f").replace("g","g").replace("h","h").replace("i","i").replace("j","j").replace("k","k").replace("l","l").replace("m","m").replace("n","n").replace("o","o").replace("p","p").replace("q","q").replace("r","r").replace("s","s").replace("t","t").replace("u","u").replace("v","v").replace("w","w").replace("x","x").replace("y","y").replace("z","z"), reply_markup = keyboard)
-
 @jalithon.on(events.NewMessage(outgoing=False, pattern='/point1'))
 async def _(event):
     await event.reply("**جاري تجميع النقاط**")
