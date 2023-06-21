@@ -54,9 +54,6 @@ OWNER_ID = 1759470911
 OWNER_IDD = 1759470911
 
 
-@bot.callback_query_handler(func=lambda call: True)
-def query_handler(call):
-    bot.answer_callback_query(callback_query_id=call.id, text='Selected option: {}'.format(call.data))
 @jalithon.on(events.NewMessage(outgoing=False, pattern='/TEST'))
 async def OwnerStart(event):
     sender = await event.get_sender()
